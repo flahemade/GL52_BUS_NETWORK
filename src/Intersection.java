@@ -1,9 +1,10 @@
-import java.util.Vector;
+import java.util.List;
 
 public class Intersection {
 
-  public List<RoadSegment> linked;
+	public List<RoadSegment> linked;
 
-    public Vector  myRoadSegment;
-
+	public Intersection(List<RoadSegment> l){
+		this.linked=l;
+	}
 }

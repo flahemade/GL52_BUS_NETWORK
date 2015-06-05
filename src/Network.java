@@ -1,9 +1,11 @@
-import java.util.Vector;
+import java.util.List;
 
 public class Network {
+	
+    public List<Line> lines;
 
-    public Vector  myLine;
-    public Vector  myBusStation;
-    public Vector  mySimulator;
+	public Network(List<Line> l){
+		this.lines=l;
+	}
 
 }

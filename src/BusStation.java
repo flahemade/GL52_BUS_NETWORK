@@ -1,10 +1,12 @@
-import java.util.Vector;
+import java.util.List;
 
 public class BusStation {
 
-  public String Name;
+	public String name;
+    public List<BusPanel>  panels;
 
-    public Vector  myBusPanel;
-    public Vector  myNetwork;
-
+    public BusStation(String n, List<BusPanel> p){
+    	this.name=n;
+    	this.panels=p;
+    }
 }

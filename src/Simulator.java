@@ -1,14 +1,13 @@
-import java.util.Vector;
 
 public class Simulator {
 
-    public Vector  myGUI;
-    public Vector  myNetwork;
+	public Simulator(){
+	}
+	
+	public void tickTime() {
+	}
 
-  public void tickTime() {
-  }
-
-  public void main() {
-  }
+	public void main() {
+	}
 
 }

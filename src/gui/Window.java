@@ -34,7 +34,7 @@ public class Window extends JFrame
         pan2.setLayout(bl);       
 
         String  c[] ={"Add a bus","Add a stop","Add a line"};
-        JComboBox   cb=new JComboBox(c);
+        JComboBox<?>   cb=new JComboBox<Object>(c);
         pan2.add(cb);       
 
         pan.add(pan2);       
