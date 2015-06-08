@@ -12,8 +12,9 @@ public class Main {
 	    
 	    generateMap();
 	    
-	    for(int i=0;i<1000000;i++){
-	    	simulator.run();
+	    for(int i=0;i<10000000;i++){
+	    	//simulator.run();
+	    	System.out.println("Test");
 	    }
 	    
 	    window.dispose();

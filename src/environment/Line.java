@@ -6,7 +6,31 @@ public class Line {
 
 	public Color color;
     public int id;
-    public List<Itinerary> itineraries;
+    public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Itinerary> getItineraries() {
+		return itineraries;
+	}
+
+	public void setItineraries(List<Itinerary> itineraries) {
+		this.itineraries = itineraries;
+	}
+
+	public List<Itinerary> itineraries;
 
     public Line(Color c, int i, List<Itinerary> it){
     	this.color=c;
