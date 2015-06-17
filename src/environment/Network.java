@@ -1,4 +1,5 @@
 package environment;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Network {
@@ -7,6 +8,8 @@ public class Network {
     private List<Bus> bus;
 
 	public Network(){
+		lines = new ArrayList<Line>();
+		bus = new ArrayList<Bus>();
 	}
 	
 	public void addLine(Line l){

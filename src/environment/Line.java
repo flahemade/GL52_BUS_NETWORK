@@ -1,5 +1,6 @@
 package environment;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
@@ -37,6 +38,7 @@ public class Line {
     public Line(Color c, int i, Itinerary it1, Itinerary it2){
     	this.color=c;
     	this.id=i;
+    	this.itineraries = new ArrayList<Itinerary>();
     	this.itineraries.add(it1);
     	this.itineraries.add(it2);
     }

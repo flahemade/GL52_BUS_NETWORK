@@ -1,5 +1,6 @@
 package environment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Map {
@@ -8,6 +9,8 @@ public class Map {
 	private List<BusStation> stations;
 	
 	public Map() {
+		roads = new ArrayList<RoadSegment>();
+		stations = new ArrayList<BusStation>();
 	}
 	
 	public void addRoadSegment(Position start, Position end){

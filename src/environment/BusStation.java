@@ -1,4 +1,5 @@
 package environment;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BusStation {
@@ -13,8 +14,8 @@ public class BusStation {
     	this.position=p;
     	this.line = l;
     	
-    	panels.add(new BusPanel(p, null, this, line.getItineraries().get(0)));
-    	panels.add(new BusPanel(p, null, this, line.getItineraries().get(1)));
+    	panels.add(new BusPanel(p, new ArrayList<Horaire>(), this, line.getItineraries().get(0)));
+    	panels.add(new BusPanel(p, new ArrayList<Horaire>(), this, line.getItineraries().get(1)));
     	
     }
     
