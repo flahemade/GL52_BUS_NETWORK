@@ -35,4 +35,12 @@ public class RoadSegment {
 	  public void leaveRoad(Bus b){
 		  currentBus.remove(b);
 	  }
+	  
+	  public float getLength(){
+		  int X = (end.getX() - start.getX());
+		  int Y = (end.getY() - start.getY());
+		  
+		  return (float) Math.sqrt(Math.pow(X,2) + Math.pow(Y, 2));
+		  
+	  }
 }

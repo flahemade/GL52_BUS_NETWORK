@@ -15,11 +15,15 @@ public class Simulator {
 		previousTime = time;
 		time = System.nanoTime();
 		
-		float delta = (float) time - previousTime;
+		//delta is expressed in milliseconds
+		float delta = (float) ((time - previousTime) * Math.pow(10,-6));
 		
 		//For each bus, we update the position
 		for (Bus bus : network.getBus() ) {
 			bus.update(delta);
+			if(bus.isArrived()){
+				network.removeBus(bus);
+			}
 		}
 	}
 
