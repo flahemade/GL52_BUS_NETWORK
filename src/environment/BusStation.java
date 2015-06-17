@@ -26,4 +26,27 @@ public class BusStation {
 	public void setPanels(List<BusPanel> panels) {
 		this.panels = panels;
 	}
+	  
+	public boolean addHoraire(BusPanel busPanel) {
+		return panels.add(busPanel);
+	}
+
+	public boolean removeHoraire(BusPanel busPanel) {
+		return panels.remove(busPanel);
+	}
+	
+	//output the schedule of each line at a station 
+	public void outputBusPanel(){ 
+		System.out.println("Bus Station :" + getName()); 
+		for (BusPanel buspanel: getPanels()) 
+		{ 
+		 System.out.println("Line " + buspanel.getLine() + " : " + buspanel.getPassages()); 
+		}
+    }
+
+	@Override
+	public String toString() {
+		return name;
+	}
+	
 }
