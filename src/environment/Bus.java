@@ -1,14 +1,17 @@
 package environment;
 
+import java.util.Iterator;
+
 public class Bus {
 
 	  private int id;
 	  private RoadSegment roadSegment;
-	  private int itineraryPosition;
+	  private Iterator<RoadSegment> itinerary;
 	  
-	  public Bus(int i, RoadSegment r){
-		  this.id=i;
-		  this.roadSegment=r;
+	  public Bus(int id, Itinerary i){
+		  this.id=id;
+		  this.itinerary = i.loadIterator();
+		  this.roadSegment=itinerary.next();
 	  }
 	  
 	  //Getters and setters
@@ -17,9 +20,6 @@ public class Bus {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public RoadSegment getRoadSegment() {
 		return roadSegment;
@@ -29,11 +29,9 @@ public class Bus {
 		this.roadSegment = roadSegment;
 	}
 
-	public int getItineraryPosition() {
-		return itineraryPosition;
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void setItineraryPosition(int itineraryPosition) {
-		this.itineraryPosition = itineraryPosition;
-	}
 }
