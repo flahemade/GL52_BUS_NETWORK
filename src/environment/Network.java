@@ -28,9 +28,16 @@ public class Network {
 			id++;
 			currentBusID = bus.get(id).getId();
 		}
-		//At the end of the while, either no bus Id was free and we create a new one, or
-		//we found a free one and we give it to the new bus
-		bus.add(id,new Bus(id, i));
+		
+
+		if(id<bus.size()){
+			//an index was free: we give it to the new bus
+			bus.add(id,new Bus(id, i));
+		}
+		else{
+			//no index was free: we create a new one
+			bus.add(new Bus(id, i));
+		}
 		
 	}
 	

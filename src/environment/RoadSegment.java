@@ -20,6 +20,10 @@ public class RoadSegment {
 	  		this.id=i;
 	  }
 	  
+	  public int getId(){
+		  return id;
+	  }
+	  
 	  public Position getStart(){
 		  return start;
 	  }
