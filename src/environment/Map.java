@@ -18,8 +18,8 @@ public class Map {
 		if(!roads.isEmpty()){
 			int currentListID = roads.get(id).getId();
 			while(currentListID == id && id<roads.size()){
-				id++;
 				currentListID = roads.get(id).getId();
+				id++;
 			}
 			
 			if(id<roads.size()){
