@@ -23,19 +23,24 @@ public class Network {
 	
 	public void addBus(Itinerary i){
 		int id = 0;
-		int currentBusID = bus.get(id).getId();
-		while(currentBusID == id && id<bus.size()){
-			id++;
-			currentBusID = bus.get(id).getId();
-		}
-		
-
-		if(id<bus.size()){
-			//an index was free: we give it to the new bus
-			bus.add(id,new Bus(id, i));
+		if(!bus.isEmpty()){
+			int currentBusID = bus.get(id).getId();
+			while(currentBusID == id && id<bus.size()){
+				id++;
+				currentBusID = bus.get(id).getId();
+			}
+			
+	
+			if(id<bus.size()){
+				//an index was free: we give it to the new bus
+				bus.add(id,new Bus(id, i));
+			}
+			else{
+				//no index was free: we create a new one
+				bus.add(new Bus(id, i));
+			}
 		}
 		else{
-			//no index was free: we create a new one
 			bus.add(new Bus(id, i));
 		}
 		
