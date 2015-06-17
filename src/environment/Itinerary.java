@@ -20,5 +20,9 @@ public class Itinerary {
 	  public Iterator<RoadSegment> loadIterator(){
 		  return segments.iterator();
 	  }
+	  
+	  public Line getLine(){
+		  return line;
+	  }
 
 }

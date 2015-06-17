@@ -6,13 +6,13 @@ public class BusPanel {
 	private Position position;
 	private List<Horaire> passages;
 	private BusStation station;
-	private Line line;
+	private Itinerary itinerary;
 
-  public BusPanel(Position po , List<Horaire> pa , BusStation s , Line l){
+  public BusPanel(Position po , List<Horaire> pa , BusStation s , Itinerary i){
 	  this.position=po;
 	  this.passages=pa;
 	  this.station=s;
-	  this.line=l;
+	  this.itinerary=i;
   }
 
   public Position getPosition() {
@@ -39,13 +39,10 @@ public class BusPanel {
 	  this.station = station;
   }
 
-  public Line getLine() {
-	  return line;
+  public Itinerary getItinerary() {
+	  return itinerary;
   }
 
-  public void setLine(Line line) {
-	  this.line = line;
-  }
 
   public boolean addHoraire(Horaire horaire) {
 	  return passages.add(horaire);

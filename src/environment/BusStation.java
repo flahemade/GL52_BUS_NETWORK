@@ -5,10 +5,21 @@ public class BusStation {
 
 	private String name;
 	private List<BusPanel>  panels;
+	private Position position;
+	Line line;
 
-    public BusStation(String n, List<BusPanel> p){
+    public BusStation(String n, Position p, Line l){
     	this.name=n;
-    	this.panels=p;
+    	this.position=p;
+    	this.line = l;
+    	
+    	panels.add(new BusPanel(p, null, this, line.getItineraries().get(0)));
+    	panels.add(new BusPanel(p, null, this, line.getItineraries().get(1)));
+    	
+    }
+    
+    public Position getPosition(){
+    	return position;
     }
     
     public String getName() {
@@ -40,7 +51,7 @@ public class BusStation {
 		System.out.println("Bus Station :" + getName()); 
 		for (BusPanel buspanel: getPanels()) 
 		{ 
-		 System.out.println("Line " + buspanel.getLine() + " : " + buspanel.getPassages()); 
+		 System.out.println("Line " + buspanel.getItinerary().getLine() + " : " + buspanel.getPassages()); 
 		}
     }
 

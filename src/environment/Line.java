@@ -34,10 +34,11 @@ public class Line {
 	}
 
 
-    public Line(Color c, int i, List<Itinerary> it){
+    public Line(Color c, int i, Itinerary it1, Itinerary it2){
     	this.color=c;
     	this.id=i;
-    	this.itineraries=it;
+    	this.itineraries.add(it1);
+    	this.itineraries.add(it2);
     }
     
 }
