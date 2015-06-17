@@ -3,10 +3,10 @@ import java.util.List;
 
 public class BusPanel {
 
-  public Position position;
-  public List<Horaire> passages;
-  public BusStation station;
-  public Line line;
+	private Position position;
+	private List<Horaire> passages;
+	private BusStation station;
+	private Line line;
 
   public BusPanel(Position po , List<Horaire> pa , BusStation s , Line l){
 	  this.position=po;

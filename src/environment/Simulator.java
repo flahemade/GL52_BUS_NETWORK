@@ -3,10 +3,10 @@ package environment;
 
 public class Simulator {
 	
-	Network network;
+	private Network network;
 	
-	long time;
-	long previousTime;
+	private long time;
+	private long previousTime;
 
 	public Simulator(){
 	}

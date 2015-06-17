@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Horaire {
 	
-	  public Date time;
-	  public Line line;
-	  public BusPanel  panel;
+	private Date time;
+	private Line line;
+	private BusPanel  panel;
 	  
 	  public Horaire(Date t, Line l, BusPanel p){
 		  this.time=t;

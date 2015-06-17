@@ -4,12 +4,12 @@ import java.util.List;
 
 public class RoadSegment {
 
-	  public Position start;
-	  public Position end;
-	  public List<Bus> currentBus;
-	  public Intersection interStart;
-	  public Intersection interEnd;
-	  public int id;
+	private Position start;
+	private Position end;
+	private List<Bus> currentBus;
+	private Intersection interStart;
+	private Intersection interEnd;
+	private int id;
 	  
 	  public RoadSegment(Position s, Position e, Intersection iS,Intersection iE , int i){
 		  	this.start = s;

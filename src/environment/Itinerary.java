@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Itinerary {
 	
-	  public List<RoadSegment> segments;
-	  public BusStation start;
-	  public BusStation end;
-	  public Line  line;
+	private List<RoadSegment> segments;
+	private BusStation start;
+	private BusStation end;
+	private Line  line;
 	
 	  public Itinerary(List<RoadSegment> se, BusStation s, BusStation e, Line l){
 		  this.segments=se;

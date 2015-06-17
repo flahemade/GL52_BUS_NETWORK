@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Intersection {
 
-	public List<RoadSegment> linked;
+	private List<RoadSegment> linked;
 
 	public Intersection(List<RoadSegment> l){
 		this.linked=l;

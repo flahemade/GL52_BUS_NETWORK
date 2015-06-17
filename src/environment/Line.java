@@ -4,8 +4,11 @@ import java.util.List;
 
 public class Line {
 
-	public Color color;
-    public int id;
+
+	private List<Itinerary> itineraries;
+	private Color color;
+	private int id;
+    
     public Color getColor() {
 		return color;
 	}
@@ -30,7 +33,6 @@ public class Line {
 		this.itineraries = itineraries;
 	}
 
-	public List<Itinerary> itineraries;
 
     public Line(Color c, int i, List<Itinerary> it){
     	this.color=c;
