@@ -19,7 +19,11 @@ public class Itinerary {
 	  }
 	  
 	  public RoadSegment findNext(Bus b){
+<<<<<<< HEAD
 		  return b.getRoadSegment();
+=======
+		  return b.getRoadSegment() + 1;
+>>>>>>> 41a7a543b3761b160b2f6923deb2c4f095047436
 	  }
 
 }

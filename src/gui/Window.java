@@ -21,10 +21,10 @@ public class Window extends JFrame
 	public Window()
     {
         super("GL52 | Bus Network");                 
-        setSize(new Dimension(800,600));    
+        setSize(new Dimension(800,680));    
 
         JPanel pan=new JPanel();
-        BoxLayout    bl=new BoxLayout(pan,BoxLayout.Y_AXIS);
+        BoxLayout bl=new BoxLayout(pan,BoxLayout.Y_AXIS);
         pan.setLayout(bl);       
 
 
