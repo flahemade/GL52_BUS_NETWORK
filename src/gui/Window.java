@@ -1,13 +1,15 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class Window extends JFrame
 {
@@ -19,14 +21,17 @@ public class Window extends JFrame
 	public Window()
     {
         super("GL52 | Bus Network");                 
-        setSize(new Dimension(800,600));    
+        setSize(new Dimension(800,680));    
 
         JPanel pan=new JPanel();
-        BoxLayout    bl=new BoxLayout(pan,BoxLayout.Y_AXIS);
+        BoxLayout bl=new BoxLayout(pan,BoxLayout.Y_AXIS);
         pan.setLayout(bl);       
 
-        JTextField  tf=new JTextField("Editez !");
-        pan.add(tf);       
+
+
+		ImageIcon image = new ImageIcon("res/output.png");
+		JLabel label = new JLabel("", image, JLabel.CENTER);
+        pan.add( label, BorderLayout.CENTER );       
 
 
         JPanel  pan2=new   JPanel(); 
