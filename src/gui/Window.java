@@ -13,8 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import environment.Bus;
-import environment.BusStation;
+import environment.BusPanel;
+import environment.Map;
 import environment.Network;
 import environment.Position;
 import environment.RoadSegment;
@@ -28,23 +28,25 @@ public class Window extends JFrame implements MouseListener
 	
 	private JButton but1,but2,but3,but4,imageButton;
 	private JPanel pan;
+	private Map m;
 	private Network n;
 	private boolean segmentSource;
 	private boolean busStop;
 	private Position currentSource;
 
-	public Window()
+	public Window(Map m)
     {
         super("GL52 | Bus Network");                 
         setSize(new Dimension(800,680));    
-        
+        this.m = m;
         pan=new JPanel();
         BoxLayout bl=new BoxLayout(pan,BoxLayout.Y_AXIS);
         pan.setLayout(bl);       
 
         segmentSource=false;
         busStop=false;
-
+        currentSource=new Position();
+        
 		ImageIcon image = new ImageIcon("res/output.png");
 		imageButton = new JButton("",image);
         pan.add( imageButton, BorderLayout.CENTER );   
@@ -87,13 +89,14 @@ public class Window extends JFrame implements MouseListener
 					r.getEnd().getX()
 					);
 		}
-		for (Bus b : n.getBus()){
+		/*for (Bus b : n.getBus()){
+			
 			g.drawRect(
 					b.getRoadSegment().getStart().getX(), 
 					b.getRoadSegment().getStart().getY(), 
 					10, 
 					5);
-		}
+		}*/
 	}
 
 	@Override
@@ -102,7 +105,9 @@ public class Window extends JFrame implements MouseListener
 		if(source == but1){
 			if(!segmentSource){
 				segmentSource = true;
+				currentSource.setX(-999);
 			}
+			System.out.println(currentSource.getX()+":"+currentSource.getY());
 		}else if(source == but2){
 			if(!busStop){
 				busStop=true;
@@ -116,9 +121,16 @@ public class Window extends JFrame implements MouseListener
 			if(busStop)busStop=false;
 		}else if(source == imageButton){
 			if(segmentSource){
-				m.addRoadSegment(currentSource,new Position(e.getX(),e.getY()));
+				System.out.println("Click sur la map : "+e.getX()+"/"+e.getY());
+				if(currentSource.getX()==-999){
+					currentSource.setX(e.getX());
+					currentSource.setY(e.getY());
+					System.out.println(currentSource.getX()+":"+currentSource.getY());
+				}else{
+					m.addRoadSegment(currentSource,new Position(e.getX(),e.getY()));
+				}
 			}else if(busStop){
-				m.addBusStop(Position p, String name);
+				//m.addBusStation(Position p, String name);
 			}
 		}
 	}
