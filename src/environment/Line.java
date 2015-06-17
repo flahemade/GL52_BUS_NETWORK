@@ -9,6 +9,12 @@ public class Line {
 	private List<Itinerary> itineraries;
 	private Color color;
 	private int id;
+
+    public Line(Color c, int i){
+    	this.color=c;
+    	this.id=i;
+    	this.itineraries = new ArrayList<Itinerary>();
+    }
     
     public Color getColor() {
 		return color;
@@ -30,17 +36,10 @@ public class Line {
 		return itineraries;
 	}
 
-	public void setItineraries(List<Itinerary> itineraries) {
-		this.itineraries = itineraries;
+	public void addItinerarie(Itinerary itinerary) {
+		this.itineraries.add(itinerary);
 	}
 
 
-    public Line(Color c, int i, Itinerary it1, Itinerary it2){
-    	this.color=c;
-    	this.id=i;
-    	this.itineraries = new ArrayList<Itinerary>();
-    	this.itineraries.add(it1);
-    	this.itineraries.add(it2);
-    }
     
 }

@@ -14,9 +14,13 @@ public class BusStation {
     	this.position=p;
     	this.line = l;
     	
-    	panels.add(new BusPanel(p, new ArrayList<Horaire>(), this, line.getItineraries().get(0)));
-    	panels.add(new BusPanel(p, new ArrayList<Horaire>(), this, line.getItineraries().get(1)));
-    	
+    	if(!line.getItineraries().isEmpty()){
+	    	panels.add(new BusPanel(p, new ArrayList<Horaire>(), this, line.getItineraries().get(0)));
+	    	if(line.getItineraries().size() > 0){
+	    		panels.add(new BusPanel(p, new ArrayList<Horaire>(), this, line.getItineraries().get(1)));
+	    	}
+    	}
+	    
     }
     
     public Position getPosition(){
