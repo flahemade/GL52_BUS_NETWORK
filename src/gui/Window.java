@@ -2,16 +2,19 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import environment.Bus;
+import environment.RoadSegment;
 
 public class Window extends JFrame implements ActionListener
 {
@@ -21,13 +24,16 @@ public class Window extends JFrame implements ActionListener
 	private static final long serialVersionUID = 7446192599263749847L;
 	
 	private JButton but1,but2,but3,imageButton;
+	JPanel pan;
+	ArrayList<RoadSegment> rs;
+	ArrayList<Bus> bl;
 
 	public Window()
     {
         super("GL52 | Bus Network");                 
         setSize(new Dimension(800,680));    
-
-        JPanel pan=new JPanel();
+        
+        pan=new JPanel();
         BoxLayout bl=new BoxLayout(pan,BoxLayout.Y_AXIS);
         pan.setLayout(bl);       
 
@@ -67,7 +73,6 @@ public class Window extends JFrame implements ActionListener
 		Object source = e.getSource();
 		if(source == but1){
 			System.out.println("Click sur le bouton \"Add a line\"");
-			//setCheckLine=true;
 		}else if(source == but2){
 			System.out.println("Click sur le bouton \"Add a stop\"");
 			//setStop=true;
@@ -79,9 +84,13 @@ public class Window extends JFrame implements ActionListener
 		}
 	}  
 	
-	public void drawCenteredCircle(Graphics2D g, int x, int y, int r) {
-		  x = x-(r/2);
-		  y = y-(r/2);
-		  g.fillOval(x,y,r,r);
+	public void draw(ArrayList<RoadSegment> rs, ArrayList<Bus> bl){
+		Graphics g = pan.getGraphics();
+		for (RoadSegment r : rs) {
+			g.drawLine(r.getStart().getX(), r.getStart().getY(), r.getEnd().getX(), r.getEnd().getX());
+		}
+		for (Bus b : bl){
+		}
 	}
+
 }
