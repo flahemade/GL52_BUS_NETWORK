@@ -14,7 +14,7 @@ public class Main {
 	    
 	    for(int i=0;i<10000000;i++){
 	    	//simulator.run();
-	    	System.out.println("Test");
+	    	i--;
 	    }
 	    
 	    window.dispose();
