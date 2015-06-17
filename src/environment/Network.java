@@ -6,8 +6,11 @@ public class Network {
     private List<Line> lines;
     private List<Bus> bus;
 
-	public Network(List<Line> l){
-		this.lines=l;
+	public Network(){
+	}
+	
+	public void addLine(Line l){
+		lines.add(l);
 	}
 	
 	public List<Line> getLines(){

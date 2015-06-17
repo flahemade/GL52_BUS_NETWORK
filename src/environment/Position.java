@@ -29,6 +29,10 @@ public class Position {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	public Position add(Position p){
+		return new Position(this.x + p.x, this.y + p.y);
+	}
 	  
 	  
 

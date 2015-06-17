@@ -7,6 +7,9 @@ public class Bus {
 	  private int id;
 	  private RoadSegment roadSegment;
 	  private Iterator<RoadSegment> itinerary;
+	  //portion of the roadSegment already went trough
+	  private float portion = 0;
+	  private float speed = 20;
 	  
 	  public Bus(int id, Itinerary i){
 		  this.id=id;
@@ -29,7 +32,7 @@ public class Bus {
 		this.roadSegment = roadSegment;
 	}
 
-	public void update() {
+	public void update(float delta) {
 		// TODO Auto-generated method stub
 		
 	}

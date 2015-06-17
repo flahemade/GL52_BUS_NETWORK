@@ -6,7 +6,7 @@ public class RoadSegment {
 
 	  public Position start;
 	  public Position end;
-	  public List<Bus> CurrentBus;
+	  public List<Bus> currentBus;
 	  public Intersection interStart;
 	  public Intersection interEnd;
 	  public int id;
@@ -14,9 +14,25 @@ public class RoadSegment {
 	  public RoadSegment(Position s, Position e, Intersection iS,Intersection iE , int i){
 		  	this.start = s;
 		  	this.end = e;
-	  		this.CurrentBus = new ArrayList<Bus>();
+	  		this.currentBus = new ArrayList<Bus>();
 	  		this.interStart = iS;
 	  		this.interEnd = iE;
 	  		this.id=i;
+	  }
+	  
+	  public Position getStart(){
+		  return start;
+	  }
+	  
+	  public Position getEnd(){
+		  return end;
+	  }
+	  
+	  public void enterRoad(Bus b){
+		  currentBus.add(b);
+	  }
+	  
+	  public void leaveRoad(Bus b){
+		  currentBus.remove(b);
 	  }
 }
