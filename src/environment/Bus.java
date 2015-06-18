@@ -47,7 +47,7 @@ public class Bus {
 		
 		float p = portion + (dist/(roadSegment.getLength()));
 		
-		if (p<1){
+		if (p<1.0){
 			//we are still in the roadSegment
 			portion = p;
 		}
@@ -55,7 +55,7 @@ public class Bus {
 			//We are out of the segment
 			 if (itinerary.hasNext()){
 				//We take away the distance to the end of the roadsegment
-				dist= dist - (portion*roadSegment.getLength());
+				dist= dist - ((portion-1)*roadSegment.getLength());
 				
 				//we change roadsegment, following the itinerary
 				roadSegment = itinerary.next();

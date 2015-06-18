@@ -21,8 +21,11 @@ public class Simulator {
 		//For each bus, we update the position
 		for (Bus bus : network.getBus() ) {
 			bus.update(delta);
-			if(bus.isArrived()){
-				network.removeBus(bus);
+		}
+
+		for(int i = 0; i< network.getBus().size();i++){
+			if(network.getBus().get(i).isArrived()){
+				network.removeBus(network.getBus().get(i));
 			}
 		}
 
