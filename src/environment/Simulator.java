@@ -12,6 +12,12 @@ public class Simulator {
 
 		this.network = n;
 		time = System.nanoTime();
+		
+		for(Line l: n.getLines()){
+			for(Itinerary i: l.getItineraries()){
+				n.addBus(i);
+			}
+		}
 	}
 	
 
