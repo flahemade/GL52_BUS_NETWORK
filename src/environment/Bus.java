@@ -38,8 +38,10 @@ public class Bus {
 		return roadSegment;
 	}
 
+	public float getProgress(){
+		return portion;
+	}
 	
-
 	public void update(float delta) {
 		float dist = speed * delta/1000;
 		
