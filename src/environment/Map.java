@@ -14,8 +14,10 @@ public class Map {
 		stations = new ArrayList<BusStation>();
 	}
 	
-	public void addRoadSegment(Position start, Position end, Color color){
-		roads.add(new RoadSegment(start,end,null,null,roads.size(), color));
+	public RoadSegment addRoadSegment(Position start, Position end, Color color){
+		RoadSegment rs = new RoadSegment(start,end,null,null,roads.size(), color);
+		roads.add(rs);
+		return rs ;
 	}
 	
 	public List<RoadSegment> getRoads(){

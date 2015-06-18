@@ -115,7 +115,7 @@ public class Window extends JFrame implements MouseListener
 		}
 		if(!n.getBus().isEmpty()){
 			for (Bus b : n.getBus()){
-				g.setColor(Color.RED);
+				g.setColor(Color.BLUE);
 				int x = (int) (b.getRoadSegment().getStart().getX()+(b.getProgress()*(b.getRoadSegment().getEnd().getX()-b.getRoadSegment().getStart().getX())));
 				int y = (int) (b.getRoadSegment().getStart().getY()+(b.getProgress()*(b.getRoadSegment().getEnd().getY()-b.getRoadSegment().getStart().getY())));
 			g.drawRect(
