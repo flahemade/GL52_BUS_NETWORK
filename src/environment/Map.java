@@ -1,5 +1,6 @@
 package environment;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,27 +14,8 @@ public class Map {
 		stations = new ArrayList<BusStation>();
 	}
 	
-	public void addRoadSegment(Position start, Position end){
-		int id = 0;
-		if(!roads.isEmpty()){
-			int currentListID = roads.get(id).getId();
-			while(currentListID == id && id<roads.size()){
-				currentListID = roads.get(id).getId();
-				id++;
-			}
-			
-			if(id<roads.size()){
-				//an index was free: we give it to the new bus
-				roads.add(id,new RoadSegment(start,end,null,null,id));
-			}
-			else{
-				//no index was free: we create a new one
-				roads.add(new RoadSegment(start,end,null,null,id));
-			}
-		}
-		else{
-			roads.add(new RoadSegment(start,end,null,null,id));
-		}
+	public void addRoadSegment(Position start, Position end, Color color){
+		roads.add(new RoadSegment(start,end,null,null,roads.size(), color));
 	}
 	
 	public List<RoadSegment> getRoads(){
