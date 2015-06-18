@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import main.Main;
 import environment.Bus;
 import environment.BusStation;
+import environment.Intersection;
 import environment.Itinerary;
 import environment.Line;
 import environment.Map;
@@ -55,6 +56,8 @@ public class Window extends JFrame implements MouseListener
         pan=new JPanel();
         BoxLayout bl=new BoxLayout(pan,BoxLayout.Y_AXIS);
         pan.setLayout(bl);       
+        
+        currentSegments=new ArrayList<RoadSegment>();
 
         segmentSource=false;
         busStop=false;
@@ -111,10 +114,8 @@ public class Window extends JFrame implements MouseListener
 			g.drawOval(b.getPosition().getX(), b.getPosition().getY(), 10, 10);
 		}
 		if(!n.getBus().isEmpty()){
-			System.out.println("Ya des bus.");
 			for (Bus b : n.getBus()){
 				g.setColor(Color.RED);
-				System.out.println("Ya des bus.");
 				int x = (int) (b.getRoadSegment().getStart().getX()+(b.getProgress()*(b.getRoadSegment().getEnd().getX()-b.getRoadSegment().getStart().getX())));
 				int y = (int) (b.getRoadSegment().getStart().getY()+(b.getProgress()*(b.getRoadSegment().getEnd().getY()-b.getRoadSegment().getStart().getY())));
 			g.drawRect(
@@ -146,9 +147,7 @@ public class Window extends JFrame implements MouseListener
 		}else if(source == but3){
 			Main.setRun(true);
 			for(Line l: n.getLines()){
-				System.out.println("Première boucle");
 				for(Itinerary i: l.getItineraries()){
-					System.out.println("Seconde boucle");
 					n.addBus(i);
 				}
 			}
@@ -159,6 +158,7 @@ public class Window extends JFrame implements MouseListener
 				String name = JOptionPane.showInputDialog(this,
                         "Name the last stop.", null);
 				arr = new BusStation(name,new Position(e.getX(),e.getY()),currentLine);
+				System.out.println("Current segments"+currentSegments);
 				Itinerary i = new Itinerary(currentSegments,dep,arr,currentLine);
 				currentLine.addItinerarie(i);
 				segmentSource=false;
@@ -173,7 +173,8 @@ public class Window extends JFrame implements MouseListener
 					currentSource.setX(e.getX());
 					currentSource.setY(e.getY());
 				}else{
-					m.addRoadSegment(new Position(currentSource.getX(),currentSource.getY()),new Position(e.getX(),e.getY()),currentLine.getColor());
+					RoadSegment t = m.addRoadSegment(new Position(currentSource.getX(),currentSource.getY()),new Position(e.getX(),e.getY()),currentLine.getColor());
+					currentSegments.add(t);
 					currentSource.setX(e.getX());
 					currentSource.setY(e.getY());
 				}
