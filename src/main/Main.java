@@ -21,8 +21,12 @@ public class Main {
 	    Network n = new Network();
 	    Window window = new Window(m,n);
 	    
+	    simulator = new Simulator(n);
+	    
 	    for(int i=0;i<10000000;i++){
-	    	if(run)simulator.run(n);
+	    	if(run) {
+	    		simulator.run();
+	    	}
 	    	i--;
 	    	Thread.sleep(500);
 	    	window.draw((ArrayList<RoadSegment>)m.getRoads());
