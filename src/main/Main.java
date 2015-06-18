@@ -9,6 +9,10 @@ import environment.Simulator;
 import gui.Window;
 
 public class Main {
+	
+	static boolean run = false;
+	
+
 		public static Simulator simulator;
 		
 	  public static void main(String[] args) throws InterruptedException{
@@ -18,7 +22,7 @@ public class Main {
 	    Window window = new Window(m,n);
 	    
 	    for(int i=0;i<10000000;i++){
-	    	//simulator.run();
+	    	if(run)simulator.run(n);
 	    	i--;
 	    	Thread.sleep(500);
 	    	window.draw((ArrayList<RoadSegment>)m.getRoads());
@@ -31,4 +35,11 @@ public class Main {
 	  public static boolean generateMap() {
 		return true;
 	  }
+		public boolean isRun() {
+			return run;
+		}
+
+		public static void setRun(boolean r) {
+			run = r;
+		}
 }

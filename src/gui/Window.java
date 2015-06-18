@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import main.Main;
 import environment.Bus;
 import environment.BusStation;
 import environment.Itinerary;
@@ -108,7 +109,7 @@ public class Window extends JFrame implements MouseListener
 		for (BusStation b : m.getStations()){
 			g.drawOval(b.getPosition().getX(), b.getPosition().getY(), 10, 10);
 		}
-		if(n!=null){
+		if(n.getBus()!=null){
 			for (Bus b : n.getBus()){
 			g.drawRect(
 					b.getRoadSegment().getStart().getX(), 
@@ -136,7 +137,7 @@ public class Window extends JFrame implements MouseListener
 				busStop=true;
 			}
 		}else if(source == but3){
-			//run();
+			Main.setRun(true);
 		}else if(source == but4){
 			
 			if(segmentSource){
