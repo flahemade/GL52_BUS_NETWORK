@@ -51,6 +51,7 @@ public class Window extends JFrame implements MouseListener
         super("GL52 | Bus Network");                 
         setSize(new Dimension(800,680));    
         this.m = m;
+        this.n = n;
         pan=new JPanel();
         BoxLayout bl=new BoxLayout(pan,BoxLayout.Y_AXIS);
         pan.setLayout(bl);       
@@ -109,11 +110,15 @@ public class Window extends JFrame implements MouseListener
 		for (BusStation b : m.getStations()){
 			g.drawOval(b.getPosition().getX(), b.getPosition().getY(), 10, 10);
 		}
-		if(n.getBus()!=null){
+		if(!n.getBus().isEmpty()){
+			System.out.println("Ya des bus.");
 			for (Bus b : n.getBus()){
+				System.out.println("Ya des bus.");
+				int x = (int) (b.getRoadSegment().getStart().getX()+(b.getProgress()*(b.getRoadSegment().getEnd().getX()-b.getRoadSegment().getStart().getX())));
+				int y = (int) (b.getRoadSegment().getStart().getY()+(b.getProgress()*(b.getRoadSegment().getEnd().getY()-b.getRoadSegment().getStart().getY())));
 			g.drawRect(
-					b.getRoadSegment().getStart().getX(), 
-					b.getRoadSegment().getStart().getY(), 
+					x, 
+					y, 
 					10, 
 					5);
 			}
@@ -138,6 +143,7 @@ public class Window extends JFrame implements MouseListener
 			}
 		}else if(source == but3){
 			Main.setRun(true);
+			but3.setText("Stop");
 		}else if(source == but4){
 			
 			if(segmentSource){

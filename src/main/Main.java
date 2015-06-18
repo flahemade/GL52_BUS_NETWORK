@@ -24,6 +24,7 @@ public class Main {
 	    simulator = new Simulator(n);
 	    
 	    for(int i=0;i<10000000;i++){
+	    	System.out.println(run);
 	    	if(run) {
 	    		simulator.run();
 	    	}
