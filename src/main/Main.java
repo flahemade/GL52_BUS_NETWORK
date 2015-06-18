@@ -20,7 +20,7 @@ public class Main {
 	    for(int i=0;i<10000000;i++){
 	    	//simulator.run();
 	    	i--;
-	    	Thread.sleep(100);
+	    	Thread.sleep(500);
 	    	window.draw((ArrayList<RoadSegment>)m.getRoads());
 	    }
 	    

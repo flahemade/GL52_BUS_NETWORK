@@ -1,9 +1,11 @@
 package gui;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -93,13 +95,18 @@ public class Window extends JFrame implements MouseListener
 	public boolean draw(ArrayList<RoadSegment> rs){
 		Graphics g = pan.getGraphics();
 		for (RoadSegment r : rs) {
-			g.setColor(r.getColor);
-			g.drawLine(
+			g.setColor(r.getColor());
+			Graphics2D g2=(Graphics2D)g;
+		    g2.setStroke(new BasicStroke(3));
+			g2.drawLine(
 					r.getEnd().getX(), 
 					r.getEnd().getY(),
 					r.getStart().getX(), 
 					r.getStart().getY()
 					);
+		}
+		for (BusStation b : m.getStations()){
+			g.drawOval(b.getPosition().getX(), b.getPosition().getY(), 10, 10);
 		}
 		if(n!=null){
 			for (Bus b : n.getBus()){
@@ -135,7 +142,7 @@ public class Window extends JFrame implements MouseListener
 			if(segmentSource){
 				String name = JOptionPane.showInputDialog(this,
                         "Name the last stop.", null);
-				arr = new BusStation("Arrivée",new Position(e.getX(),e.getY()),currentLine);
+				arr = new BusStation(name,new Position(e.getX(),e.getY()),currentLine);
 				Itinerary i = new Itinerary(currentSegments,dep,arr,currentLine);
 				segmentSource=false;
 			}
@@ -154,7 +161,9 @@ public class Window extends JFrame implements MouseListener
 					currentSource.setY(e.getY());
 				}
 			}else if(busStop){
-				m.addBusStation("Arrêt",new Position(e.getX(),e.getY()),currentLine);
+				String name = JOptionPane.showInputDialog(this,
+                        "Name of the stop.", null);
+				m.addBusStation(name,new Position(e.getX(),e.getY()),currentLine);
 			}
 		}
 	}
