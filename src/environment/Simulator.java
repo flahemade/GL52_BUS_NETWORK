@@ -21,13 +21,8 @@ public class Simulator {
 	}
 	
 
-	public void run(){
+	public void run(float delta){
 
-		previousTime = time;
-		time = System.nanoTime();
-		
-		//delta is expressed in milliseconds
-		float delta = (float) ((time - previousTime) * Math.pow(10,-6));
 		
 		//For each bus, we update the position
 		for (Bus bus : network.getBus() ) {
