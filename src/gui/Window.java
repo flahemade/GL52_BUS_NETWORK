@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
@@ -11,9 +12,13 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import environment.BusPanel;
+import environment.Bus;
+import environment.BusStation;
+import environment.Itinerary;
+import environment.Line;
 import environment.Map;
 import environment.Network;
 import environment.Position;
@@ -26,15 +31,19 @@ public class Window extends JFrame implements MouseListener
 	 */
 	private static final long serialVersionUID = 7446192599263749847L;
 	
-	private JButton but1,but2,but3,but4,imageButton;
+	private JButton but1,but2,but3,but4,but5,imageButton;
 	private JPanel pan;
 	private Map m;
 	private Network n;
 	private boolean segmentSource;
 	private boolean busStop;
 	private Position currentSource;
+	private ArrayList<RoadSegment> currentSegments;
+	private BusStation dep;
+	private BusStation arr;
+	private Line currentLine;
 
-	public Window(Map m)
+	public Window(Map m,Network n)
     {
         super("GL52 | Bus Network");                 
         setSize(new Dimension(800,680));    
@@ -57,10 +66,12 @@ public class Window extends JFrame implements MouseListener
         bl=new BoxLayout(pan2,BoxLayout.X_AXIS); 
         pan2.setLayout(bl);       
         
-        but1=new JButton("Add a line");
+        but1=new JButton("Add an itinerary");
         pan.add(but1);      
         but2=new JButton("Add a stop");
         pan.add(but2);
+        but5=new JButton("Add a line");
+        pan.add(but5);
         but4=new JButton("Finish");
         pan.add(but4);  
         but3=new JButton("Run");
@@ -79,24 +90,27 @@ public class Window extends JFrame implements MouseListener
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-	public void draw(ArrayList<RoadSegment> rs){
+	public boolean draw(ArrayList<RoadSegment> rs){
 		Graphics g = pan.getGraphics();
 		for (RoadSegment r : rs) {
+			g.setColor(r.getColor);
 			g.drawLine(
-					r.getStart().getX(), 
-					r.getStart().getY(), 
 					r.getEnd().getX(), 
-					r.getEnd().getX()
+					r.getEnd().getY(),
+					r.getStart().getX(), 
+					r.getStart().getY()
 					);
 		}
-		/*for (Bus b : n.getBus()){
-			
+		if(n!=null){
+			for (Bus b : n.getBus()){
 			g.drawRect(
 					b.getRoadSegment().getStart().getX(), 
 					b.getRoadSegment().getStart().getY(), 
 					10, 
 					5);
-		}*/
+			}
+		}
+		return true;
 	}
 
 	@Override
@@ -106,31 +120,41 @@ public class Window extends JFrame implements MouseListener
 			if(!segmentSource){
 				segmentSource = true;
 				currentSource.setX(-999);
+				String name = JOptionPane.showInputDialog(this,
+		                "To which line does this itinerary belong ?", null);
+				currentLine = new Line(Color.BLUE,Integer.parseInt(name));
 			}
-			System.out.println(currentSource.getX()+":"+currentSource.getY());
 		}else if(source == but2){
 			if(!busStop){
 				busStop=true;
 			}
 		}else if(source == but3){
-			System.out.println("Click sur le bouton \"Run\"");
 			//run();
 		}else if(source == but4){
-			System.out.println("Click sur le bouton \"Finish\"");
-			if(segmentSource)segmentSource=false;
+			
+			if(segmentSource){
+				String name = JOptionPane.showInputDialog(this,
+                        "Name the last stop.", null);
+				arr = new BusStation("Arrivée",new Position(e.getX(),e.getY()),currentLine);
+				Itinerary i = new Itinerary(currentSegments,dep,arr,currentLine);
+				segmentSource=false;
+			}
 			if(busStop)busStop=false;
 		}else if(source == imageButton){
 			if(segmentSource){
-				System.out.println("Click sur la map : "+e.getX()+"/"+e.getY());
 				if(currentSource.getX()==-999){
+					String name = JOptionPane.showInputDialog(this,
+	                        "Name the first stop.", null);
+					dep = new BusStation(name,new Position(e.getX(),e.getY()),currentLine);
 					currentSource.setX(e.getX());
 					currentSource.setY(e.getY());
-					System.out.println(currentSource.getX()+":"+currentSource.getY());
 				}else{
-					m.addRoadSegment(currentSource,new Position(e.getX(),e.getY()));
+					m.addRoadSegment(new Position(currentSource.getX(),currentSource.getY()),new Position(e.getX(),e.getY()),currentLine.getColor());
+					currentSource.setX(e.getX());
+					currentSource.setY(e.getY());
 				}
 			}else if(busStop){
-				//m.addBusStation(Position p, String name);
+				m.addBusStation("Arrêt",new Position(e.getX(),e.getY()),currentLine);
 			}
 		}
 	}

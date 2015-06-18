@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 
 import environment.Map;
+import environment.Network;
 import environment.RoadSegment;
 import environment.Simulator;
 import gui.Window;
@@ -13,12 +14,14 @@ public class Main {
 	  public static void main(String[] args) throws InterruptedException{
 	    
 	    Map m = new Map();
-	    Window window = new Window(m);
+	    Network n = new Network();
+	    Window window = new Window(m,n);
 	    
 	    for(int i=0;i<10000000;i++){
 	    	//simulator.run();
 	    	i--;
-	    	window.draw(new ArrayList<RoadSegment>());
+	    	Thread.sleep(100);
+	    	window.draw((ArrayList<RoadSegment>)m.getRoads());
 	    }
 	    
 	    window.dispose();
