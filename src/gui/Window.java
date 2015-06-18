@@ -113,6 +113,7 @@ public class Window extends JFrame implements MouseListener
 		if(!n.getBus().isEmpty()){
 			System.out.println("Ya des bus.");
 			for (Bus b : n.getBus()){
+				g.setColor(Color.RED);
 				System.out.println("Ya des bus.");
 				int x = (int) (b.getRoadSegment().getStart().getX()+(b.getProgress()*(b.getRoadSegment().getEnd().getX()-b.getRoadSegment().getStart().getX())));
 				int y = (int) (b.getRoadSegment().getStart().getY()+(b.getProgress()*(b.getRoadSegment().getEnd().getY()-b.getRoadSegment().getStart().getY())));
@@ -136,6 +137,7 @@ public class Window extends JFrame implements MouseListener
 				String name = JOptionPane.showInputDialog(this,
 		                "To which line does this itinerary belong ?", null);
 				currentLine = new Line(Color.BLUE,Integer.parseInt(name));
+				n.addLine(currentLine);
 			}
 		}else if(source == but2){
 			if(!busStop){
@@ -143,6 +145,13 @@ public class Window extends JFrame implements MouseListener
 			}
 		}else if(source == but3){
 			Main.setRun(true);
+			for(Line l: n.getLines()){
+				System.out.println("Première boucle");
+				for(Itinerary i: l.getItineraries()){
+					System.out.println("Seconde boucle");
+					n.addBus(i);
+				}
+			}
 			but3.setText("Stop");
 		}else if(source == but4){
 			
@@ -151,6 +160,7 @@ public class Window extends JFrame implements MouseListener
                         "Name the last stop.", null);
 				arr = new BusStation(name,new Position(e.getX(),e.getY()),currentLine);
 				Itinerary i = new Itinerary(currentSegments,dep,arr,currentLine);
+				currentLine.addItinerarie(i);
 				segmentSource=false;
 			}
 			if(busStop)busStop=false;
