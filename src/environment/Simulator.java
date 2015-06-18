@@ -8,10 +8,15 @@ public class Simulator {
 	private long time;
 	private long previousTime;
 
-	public Simulator(){
+	public Simulator(Network n){
+
+		this.network = n;
+		time = System.nanoTime();
 	}
 	
-	public void tickTime() {
+
+	public void run(){
+
 		previousTime = time;
 		time = System.nanoTime();
 		
@@ -25,14 +30,8 @@ public class Simulator {
 				network.removeBus(bus);
 			}
 		}
-	}
 
-	public void run(Network n){
-		time = System.nanoTime();
-		
-		this.network = n;
-		System.out.println("Run a cycle.");
-		this.tickTime();
+		//System.out.println("Run a cycle.");
 	}
 
 }
