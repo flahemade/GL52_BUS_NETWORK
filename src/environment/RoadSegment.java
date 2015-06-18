@@ -1,6 +1,7 @@
 package environment;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Color;
 
 public class RoadSegment {
 
@@ -10,18 +11,24 @@ public class RoadSegment {
 	private Intersection interStart;
 	private Intersection interEnd;
 	private int id;
+	Color color;
 	  
-	  public RoadSegment(Position s, Position e, Intersection iS,Intersection iE , int i){
+	  public RoadSegment(Position s, Position e, Intersection iS,Intersection iE , int i, Color c){
 		  	this.start = s;
 		  	this.end = e;
 	  		this.currentBus = new ArrayList<Bus>();
 	  		this.interStart = iS;
 	  		this.interEnd = iE;
 	  		this.id=i;
+	  		this.color = c;
 	  }
 	  
 	  public int getId(){
 		  return id;
+	  }
+	  
+	  public Color getColor(){
+		  return color;
 	  }
 	  
 	  public Position getStart(){
